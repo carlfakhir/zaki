@@ -4,79 +4,199 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Zaki: know who to call today</title>
-<meta name="description" content="Zaki is the AI operating system for real estate agents. It ranks leads every morning and says who to call and what to say. Team leads see where to step in.">
+<meta name="description" content="Zaki is the AI operating system for real estate agents. Every morning it says who to call and what to say. Team leads see where to step in.">
+<meta name="theme-color" content="#1638C9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
 <style>
-:root { --bg:#f5f6f8; --surface:#fff; --fg:#1a1d24; --muted:#646b78; --line:#e9ebef; --accent:#3448d6; --accent-ink:#fff; --soft:#eceffd; --good:#1d7a4b; --good-bg:#e4f4ea; --warn:#9e5f00; --warn-bg:#fdf1dc; color-scheme:light }
-@media (prefers-color-scheme: dark) { :root { --bg:#0f1115; --surface:#171a21; --fg:#e7e9ee; --muted:#9aa1ad; --line:#2a2f3a; --accent:#8d9cff; --accent-ink:#0f1115; --soft:#22284a; --good:#5fd39a; --good-bg:#16301f; --warn:#f0b65a; --warn-bg:#33270f; color-scheme:dark } }
-* { box-sizing:border-box }
-html { -webkit-text-size-adjust:100% }
-body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.55 "Geist",system-ui,sans-serif; -webkit-font-smoothing:antialiased }
-.wrap { max-width:1040px; margin:0 auto; padding:0 max(16px,env(safe-area-inset-left)) }
-header { display:flex; justify-content:space-between; align-items:center; padding:20px 0 }
-.logo { font-weight:700; font-size:20px; letter-spacing:-.02em }
-a { color:inherit }
-.btn { display:inline-block; background:var(--accent); color:var(--accent-ink); text-decoration:none; font-weight:600; padding:12px 22px; border-radius:999px }
-.btn.sm { padding:8px 16px; font-size:15px }
-.hero { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:56px; align-items:center; padding:56px 0 72px }
-h1 { font-size:clamp(38px,6vw,60px); line-height:1.04; letter-spacing:-.035em; font-weight:650; margin:0 0 20px; text-wrap:balance }
-.lede { font-size:20px; color:var(--muted); margin:0 0 28px; max-width:34em }
-.note { font-size:14px; color:var(--muted); margin:14px 0 0 }
-.phone { background:var(--surface); border:1px solid var(--line); border-radius:32px; padding:22px 18px; box-shadow:0 18px 50px rgba(18,21,28,.12); max-width:340px; width:100%; justify-self:center }
-.phone .d { font-size:13px; color:var(--muted) }
-.phone h2 { font-size:21px; margin:2px 0 14px; letter-spacing:-.02em }
-.call { border-top:1px solid var(--line); padding:12px 0; display:grid; gap:4px }
-.call b { font-weight:600 }
-.call .why { font-size:14px; color:var(--muted); line-height:1.4 }
-.tag { justify-self:start; font-size:12px; font-weight:600; border-radius:999px; padding:2px 9px }
-.tag.hot { background:var(--warn-bg); color:var(--warn) } .tag.ok { background:var(--good-bg); color:var(--good) }
-section { padding:56px 0; border-top:1px solid var(--line) }
-h2.s { font-size:clamp(26px,3.6vw,34px); letter-spacing:-.025em; font-weight:650; margin:0 0 28px; line-height:1.15; max-width:22em; text-wrap:balance }
-.three { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:36px }
-.three h3 { font-size:18px; margin:0 0 6px; font-weight:600 }
-.three p { margin:0; color:var(--muted) }
-footer { padding:32px 0 56px; border-top:1px solid var(--line); font-size:14px; color:var(--muted) }
-@media (max-width:820px) { .hero { grid-template-columns:1fr; gap:40px; padding:28px 0 56px } .three { grid-template-columns:1fr; gap:26px } .lede { font-size:18px } }
+:root {
+  --enamel: #1638C9; --enamel-deep: #0E2795; --sign: #FFD400; --paper: #FFFFFF;
+  --ink: #10162B; --slate: #55607C; --rule: #DCE1EF; --wash: #EEF1FB;
+  --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --gutter: max(20px, env(safe-area-inset-left), 4vw);
+  color-scheme: light;
+}
+* { box-sizing: border-box }
+html { -webkit-text-size-adjust: 100% }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 18px/1.5 var(--body); -webkit-font-smoothing: antialiased }
+a { color: inherit }
+:focus-visible { outline: 3px solid var(--sign); outline-offset: 3px }
+.on-paper :focus-visible { outline-color: var(--enamel) }
+h1, h2 { font-family: var(--display); font-weight: 900; margin: 0; line-height: .94; letter-spacing: .002em; text-wrap: balance }
+p { margin: 0 }
+.inner { max-width: 1240px; margin: 0 auto; padding-inline: var(--gutter) }
+
+.btn { display: inline-block; font-weight: 700; text-decoration: none; padding: 15px 26px; background: var(--sign); color: var(--ink); border-radius: 3px; transition: background .15s }
+.btn:hover { background: #fff }
+.btn.dark { background: var(--ink); color: #fff }
+.btn.dark:hover { background: var(--enamel) }
+
+/* hero: the agent's whole database, and the three names that matter today */
+.hero { position: relative; overflow: hidden; background: var(--enamel); color: #fff; isolation: isolate }
+.wall { position: absolute; inset: 0; z-index: -1; padding: 8px; font-size: 13px; line-height: 1.5; color: #fff; opacity: .15; column-width: 118px; column-gap: 12px; column-fill: auto; white-space: nowrap; overflow: hidden; pointer-events: none; animation: dim 1.5s .35s cubic-bezier(.3,.7,.2,1) backwards }
+.wall span { display: block }
+@keyframes dim { from { opacity: .62 } }
+.wall::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, var(--enamel) 34%, transparent 78%) }
+header { display: flex; justify-content: space-between; align-items: center; padding-block: 22px }
+.logo { font: 900 34px/1 var(--display); text-decoration: none; letter-spacing: .01em }
+.top-link { font-weight: 600; text-underline-offset: 4px }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: clamp(32px, 5vw, 80px); align-items: start; padding-block: clamp(26px, 3vw, 44px) clamp(52px, 6vw, 88px) }
+h1 { font-size: clamp(72px, 10.8vw, 164px); padding-top: clamp(28px, 4vw, 60px) }
+h1 span { display: block }
+.lede { font-size: clamp(18px, 1.7vw, 23px); line-height: 1.42; max-width: 29em; margin: 0 0 28px }
+
+.sheet { background: #fff; color: var(--ink); border-radius: 4px; box-shadow: 0 2px 0 var(--enamel-deep), 0 28px 60px -22px rgba(6,16,70,.75) }
+.sheet-head { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; font-size: 14px; color: var(--slate); border-bottom: 1px solid var(--rule) }
+.rank { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 4px; padding: 15px 20px 16px 12px; border-bottom: 1px solid var(--rule); animation: rise .6s cubic-bezier(.2,.8,.2,1) backwards }
+.rank:last-child { border-bottom: 0 }
+.rank:nth-of-type(2) { animation-delay: .75s } .rank:nth-of-type(3) { animation-delay: .9s } .rank:nth-of-type(4) { animation-delay: 1.05s }
+@keyframes rise { from { opacity: 0; transform: translateY(10px) } }
+.num { font: 900 54px/.92 var(--display); text-align: center; color: var(--enamel) }
+.first { background: var(--sign) } .first .num { color: var(--ink) } .first .why { color: var(--ink) }
+.who { font-weight: 700; font-size: 19px; line-height: 1.25 }
+.why { font-size: 15px; line-height: 1.38; color: var(--slate); margin-top: 2px }
+.say { font-size: 15px; font-weight: 600; margin-top: 5px }
+
+/* sections */
+section { padding-block: clamp(64px, 9vw, 128px) }
+h2 { font-size: clamp(50px, 6.4vw, 96px); max-width: 11em }
+.copy { font-size: clamp(18px, 1.5vw, 20px); max-width: 33em; margin-top: 22px }
+.copy + .copy { margin-top: 14px }
+.split { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(40px, 7vw, 110px); align-items: center }
+
+/* the phone: one contact, opened */
+.phone { width: min(100%, 340px); justify-self: center; background: var(--ink); padding: 9px; border-radius: 40px }
+.screen { background: #fff; border-radius: 32px; padding: 30px 20px 20px; display: grid; gap: 16px }
+.screen .name { font-weight: 700; font-size: 22px; line-height: 1.2 }
+.screen .sub { font-size: 14px; color: var(--slate) }
+.said { background: var(--wash); border-radius: 4px; padding: 12px 14px; font-size: 15px; line-height: 1.4 }
+.said small { display: block; font-size: 13px; color: var(--slate); margin-top: 6px }
+.draft { border-left: 3px solid var(--enamel); padding-left: 12px; font-size: 15px; line-height: 1.42 }
+.draft b { display: block; font-size: 13px; font-weight: 600; color: var(--slate); margin-bottom: 3px }
+.acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.acts span { text-align: center; font-weight: 700; font-size: 15px; padding: 11px 6px; border-radius: 3px; background: var(--enamel); color: #fff }
+.acts span + span { background: var(--wash); color: var(--enamel) }
+
+/* team lead: a real table */
+.lead { background: var(--wash) }
+.tablewrap { margin-top: clamp(32px, 4vw, 52px); overflow-x: auto; -webkit-overflow-scrolling: touch }
+table { width: 100%; min-width: 620px; border-collapse: collapse; background: #fff }
+caption { caption-side: bottom; text-align: left; font-size: 14px; color: var(--slate); padding-top: 12px }
+th { text-align: left; font-size: 14px; font-weight: 600; color: var(--slate); padding: 14px 18px; border-bottom: 2px solid var(--ink) }
+td { padding: 15px 18px; border-bottom: 1px solid var(--rule) }
+tr:last-child td { border-bottom: 0 }
+.n { text-align: right; font-variant-numeric: tabular-nums }
+td:first-child { font-weight: 600; white-space: nowrap }
+.total td { font: 900 34px/1 var(--display); background: var(--ink); color: #fff; border: 0 }
+.total td:last-child { font: 500 15px/1.3 var(--body) }
+.step { color: var(--enamel); font-weight: 600 }
+
+/* close */
+.close { background: var(--sign) }
+.close-grid { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap }
+.close h2 { font-size: clamp(50px, 7.6vw, 116px); max-width: 10em }
+footer { padding-block: 40px 44px; font-size: 15px; color: var(--slate) }
+.foot { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 48px }
+footer b { color: var(--ink); font-weight: 600 }
+footer p { max-width: 40em }
+
+@media (max-width: 900px) {
+  .hero-grid, .split, .foot { grid-template-columns: minmax(0, 1fr) }
+  .wall::after { background: linear-gradient(180deg, var(--enamel) 30%, rgba(22,56,201,.6)) }
+  h1 { font-size: clamp(72px, 21vw, 150px) }
+}
+@media (max-width: 480px) {
+  .rank { grid-template-columns: 48px minmax(0, 1fr); padding-left: 6px }
+  .num { font-size: 46px }
+}
+@media (prefers-reduced-motion: reduce) { .wall, .rank { animation: none } .btn { transition: none } }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header><div class="logo">Zaki</div><a class="btn sm" href="demo/">Try the demo</a></header>
-  <main>
-    <div class="hero">
+<div class="hero">
+  <div class="wall" id="wall" aria-hidden="true"></div>
+  <div class="inner">
+    <header><a class="logo" href="./">Zaki</a><a class="top-link" href="demo/">Try the demo</a></header>
+    <h1><span>5,000 contacts.</span><span>Call these three.</span></h1>
+    <div class="hero-grid">
       <div>
-        <h1>Every agent should know who to call today.</h1>
-        <p class="lede">Zaki is the AI operating system for real estate agents. Every morning it ranks an agent's leads and says who to call and what to say. It works from a phone, so agents can stay out showing homes.</p>
+        <p class="lede">Zaki is the AI operating system for real estate agents. Every morning it tells you who to call and what to say, on your phone, so you can stay out showing homes.</p>
         <a class="btn" href="demo/">Try the demo</a>
-        <p class="note">The demo uses sample data. We are building the live version with real estate teams in Atlanta.</p>
       </div>
-      <div class="phone" aria-label="Example of the Zaki morning list, using sample data">
-        <div class="d">Tuesday morning · sample data</div>
-        <h2>Call these 3 today</h2>
-        <div class="call"><b>Dana R.</b><span class="why">Said on your last call they'd buy "around the new year." A new listing fits their budget.</span><span class="tag hot">Ask about Saturday</span></div>
-        <div class="call"><b>Marcus T.</b><span class="why">Nobody has talked to him in 41 days. He asked about selling in spring.</span><span class="tag ok">Check in</span></div>
-        <div class="call"><b>Priya S.</b><span class="why">Viewed the same home three times this week.</span><span class="tag hot">Offer a showing</span></div>
+      <div class="sheet" aria-label="Example morning list, sample data">
+        <div class="sheet-head"><span>Your Tuesday morning</span><span>Sample data</span></div>
+        <div class="rank first"><div class="num">1</div><div><div class="who">Dana Reyes</div><div class="why">Said "around the new year" on your last call. A home that fits just listed in Roswell.</div></div></div>
+        <div class="rank"><div class="num">2</div><div><div class="who">Marcus Tate</div><div class="why">Asked about selling in spring. You last talked 41 days ago.</div></div></div>
+        <div class="rank"><div class="num">3</div><div><div class="who">Priya Shah</div><div class="why">Opened the same listing three times this week.</div></div></div>
       </div>
     </div>
-    <section>
-      <h2 class="s">A CRM stores what happened. Zaki says what to do next.</h2>
-      <div class="three">
-        <div><h3>For agents</h3><p>A ranked call list each morning, with the reason for each call and a message ready to send. The agent reads it before anything goes out.</p></div>
-        <div><h3>For team leads</h3><p>See every agent's activity in one place: calls made, leads followed up, deals at risk. Get a ranked list of where to step in.</p></div>
-        <div><h3>On the go</h3><p>Built for the phone first. Agents get paid to be with clients, not to learn software or sit at a desk.</p></div>
-      </div>
-    </section>
-    <section>
-      <h2 class="s">Who we are</h2>
-      <div class="three">
-        <div><h3>Alexander Jaber</h3><p>CEO. Licensed real estate agent. Georgia Tech.</p></div>
-        <div><h3>Carl Fakhir</h3><p>CTO. Software engineer. Georgia Tech.</p></div>
-        <div><h3>Christopher Samaha</h3><p>Co-founder. Engineer.</p></div>
-      </div>
-    </section>
-  </main>
-  <footer>© 2026 Zaki. Zaki is independent and is not affiliated with or endorsed by Keller Williams or any other brokerage or software company named in the demo.</footer>
+  </div>
 </div>
+
+<main class="on-paper">
+  <section>
+    <div class="inner split">
+      <div>
+        <h2>It remembers what your client said.</h2>
+        <p class="copy">A buyer tells you "six months" in June. By October, nobody remembers. Zaki transcribes the call, keeps the timeline, and brings them back when it's time, with the reason to call.</p>
+        <p class="copy">It writes the follow-up too. You read it before anything goes out.</p>
+      </div>
+      <div class="phone" aria-label="Example of one contact in Zaki, sample data">
+        <div class="screen">
+          <div><div class="name">Dana Reyes</div><div class="sub">Buyer, up to $620K, sample data</div></div>
+          <div class="said">"We want to be in by the new year. A yard for the dog is the one thing we won't budge on."<small>Your call, September 9</small></div>
+          <div class="draft"><b>Text ready to send</b>Hi Dana, a home just listed in Roswell with a big fenced yard. It's $598K. Want to see it Saturday?</div>
+          <div class="acts"><span>Call</span><span>Send text</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lead">
+    <div class="inner">
+      <h2>See what your team did yesterday, not just what closed.</h2>
+      <p class="copy">Most team leads only hear about a deal when the paperwork shows up. Zaki shows every agent's activity and ranks where you should step in.</p>
+      <div class="tablewrap">
+        <table>
+          <caption>Example team view, sample data</caption>
+          <thead><tr><th scope="col">Agent</th><th scope="col" class="n">Calls</th><th scope="col" class="n">Conversations</th><th scope="col" class="n">Leads waiting</th><th scope="col">Where to step in</th></tr></thead>
+          <tbody>
+            <tr><td>Jordan Ellis</td><td class="n">4</td><td class="n">1</td><td class="n">23</td><td class="step">Hand off 10 waiting leads</td></tr>
+            <tr><td>Sam Whitfield</td><td class="n">31</td><td class="n">3</td><td class="n">6</td><td class="step">Lots of calls, few conversations. Listen to one together.</td></tr>
+            <tr><td>Riley Brooks</td><td class="n">26</td><td class="n">11</td><td class="n">2</td><td>On track</td></tr>
+            <tr><td>Avery Lin</td><td class="n">19</td><td class="n">9</td><td class="n">0</td><td>On track</td></tr>
+          </tbody>
+          <tfoot><tr class="total"><td>Team</td><td class="n">80</td><td class="n">24</td><td class="n">31</td><td>2 agents need you today</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="inner close-grid">
+      <h2>Agents get paid to be with clients.</h2>
+      <a class="btn dark" href="demo/">Try the demo</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="inner foot">
+    <p><b>Built in Atlanta by Alexander Jaber, Carl Fakhir and Christopher Samaha.</b> We're building the live version with real estate teams now. The demo uses sample data.</p>
+    <p>© 2026 Zaki. Zaki is independent and is not affiliated with or endorsed by Keller Williams or any other brokerage or software company named in the demo.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var first = "Ana Ben Cara Dev Elena Finn Grace Hugo Iris Jon Kira Leo Maya Nate Olive Pete Quinn Rosa Seth Tess Uma Vic Wren Yara Zoe Amir Beth Cole Dina Eli".split(" ");
+  var last = "Abbott Baker Chen Diaz Evans Ford Gomez Hart Ito Jones Kim Lee Moore Nash Ortiz Patel Reed Shaw Tran Vance Walsh Young".split(" ");
+  var out = [], i;
+  for (i = 0; i < 2400; i++) out.push("<span>" + first[(i * 7) % first.length] + " " + last[(i * 11 + (i % 5)) % last.length] + "</span>");
+  document.getElementById("wall").innerHTML = out.join("");
+})();
+</script>
 </body>
 </html>

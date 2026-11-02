@@ -10,10 +10,10 @@ body { margin: 0; font: 14px system-ui, sans-serif }
 img { max-width: 100% }
 [hidden] { display: none !important }
 </style>
-<title>Zaki Prototype</title>
+<title>Zaki demo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: top bar with one search-or-ask box, tabs under it, one column of panels. Detail opens in a side drawer so you never lose your place.
    Signature element: the deal timeline rail. Everything else stays quiet and crisp. */
@@ -22,8 +22,8 @@ img { max-width: 100% }
   --accent: #3448d6; --accent-ink: #ffffff; --accent-soft: #eceffd;
   --good: #1d7a4b; --good-bg: #e4f4ea; --warn: #9e5f00; --warn-bg: #fdf1dc; --bad: #c03a2d; --bad-bg: #fbe7e4;
   --bubble-bot: #f0f2f5; --overlay: rgba(14, 18, 28, .42); --shadow: 0 12px 40px rgba(18, 21, 28, .14);
-  --sans: "Geist", "Segoe UI", system-ui, sans-serif;
-  --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --bg: #0f1115; --surface: #171a21; --raise: #1c2029; --fg: #e7e9ee; --muted: #9aa1ad; --faint: #6d7480; --line: #2a2f3a;
@@ -370,6 +370,40 @@ th { font-size: 12px }
 .f { padding: 6px 13px }
 .brand .mark { border-radius: 10px }
 @media (max-width: 560px) { .drawer { top: 0; bottom: 0; right: 0; width: 100%; border-radius: 0; border: 0 } .tabs { width: 100% } }
+
+/* Zaki brand layer: enamel cobalt and sign yellow, signage type, squarer corners */
+:root { --accent: #1638C9; --accent-soft: #E6EAFA; --bg: #F3F5FB; --line: #DCE1EF; --muted: #55607C; --faint: #7D86A0; --fg: #10162B; --sign: #FFD400; --display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif; --band: rgba(22,56,201,1) }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent: #9DB0FF; --accent-soft: #1D2A5E; --bg: #0E1220; --surface: #161B2C; --raise: #1C2236; --line: #2A3148; --muted: #A2AAC0; --faint: #737C96; --fg: #EDEFF6; --band: #0E2795 } }
+:root[data-theme="dark"] { --accent: #9DB0FF; --accent-soft: #1D2A5E; --bg: #0E1220; --surface: #161B2C; --raise: #1C2236; --line: #2A3148; --muted: #A2AAC0; --faint: #737C96; --fg: #EDEFF6; --band: #0E2795 }
+h1 { font-family: var(--display); font-weight: 900; font-size: clamp(44px, 6vw, 72px); line-height: .96; letter-spacing: .002em }
+h2 { font-weight: 700 }
+.topband { background: var(--band); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 0; color: #fff }
+.top { grid-template-columns: auto auto 1fr auto }
+a.brand { font: 900 30px/1 var(--display); color: #fff; text-decoration: none; letter-spacing: .01em }
+.top .proto { color: #fff; border: 0; padding: 0; font-size: 13px; opacity: .85 }
+.topband .search input { background: rgba(255,255,255,.14); border-color: transparent; color: #fff; border-radius: 4px }
+.topband .search input::placeholder { color: rgba(255,255,255,.75) }
+.topband .search input:focus { background: #fff; color: #10162B; border-color: transparent; box-shadow: 0 0 0 3px var(--sign) }
+.topband .search svg { color: #fff } .topband .search input:focus ~ svg { color: #10162B }
+.topband .search kbd { background: transparent; color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.35) }
+.topband .ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.45); box-shadow: none }
+.topband .ghost:hover { background: rgba(255,255,255,.14); border-color: #fff }
+.btn, .ghost, .act, .soft, .send input, .addwant input { border-radius: 4px }
+.btn { box-shadow: none } .ghost { box-shadow: none }
+.box, .role { border-radius: 6px; box-shadow: none } .kpis { border-radius: 6px; box-shadow: none }
+.app, .wants, .nextup, .quick button, .transcript, .drop, .modal textarea, .modal select, .results { border-radius: 6px }
+.res, .ic, .logo, .mini { border-radius: 4px } .modal { border-radius: 8px }
+.tabs { border-radius: 0; border: 0; background: transparent; box-shadow: none; padding: 0; border-bottom: 2px solid var(--line); width: 100%; gap: 0 }
+.tab { border-radius: 0; padding: 10px 14px; margin-bottom: -2px; border-bottom: 2px solid transparent }
+.tab[aria-selected="true"] { background: transparent; color: var(--fg); border-bottom-color: var(--accent) }
+.tab:hover:not([aria-selected="true"]) { background: transparent; color: var(--fg) }
+.toast { border-radius: 4px } .f { border-radius: 4px }
+.drawer { border-radius: 8px } .role:hover { box-shadow: 0 0 0 2px var(--accent) }
+.chip { border-radius: 4px }
+.item.click { border-radius: 0 } .hello > div { gap: 10px }
+td { font-variant-numeric: normal }
+@media (max-width: 820px) { .top { grid-template-columns: auto 1fr auto } .top .proto { justify-self: start } .topband .search kbd { display: none } .topband .search input { text-overflow: ellipsis } }
+@media (max-width: 560px) { .top .proto { display: inline; font-size: 12px } .drawer { border-radius: 0 } .tabs { width: 100% } }
 </style>
 </head>
 <body>
@@ -694,7 +728,7 @@ function render() {
 
 function renderTop() {
   $("#top").innerHTML = `
-    <div class="brand"><span class="mark"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2.4" stroke-linecap="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></span>Zaki <span class="proto">Prototype</span></div>
+    <a class="brand" href="../">Zaki</a><span class="proto">Demo with sample data</span>
     ${role ? `<div class="search" id="search">${svg("search")}<input id="q" placeholder="Search people and deals, or ask anything" autocomplete="off" aria-label="Search or ask"><kbd>/</kbd><div class="results" id="results" hidden></div></div>` : "<span></span>"}
     <div class="topr">${role ? `<button class="ghost sm" id="switchRole">Switch role</button>` : ""}</div>`;
 }
