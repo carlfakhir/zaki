@@ -5,194 +5,134 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Zaki: know who to call today</title>
 <meta name="description" content="Zaki is the AI operating system for real estate agents. Every morning it says who to call and what to say. Team leads see where to step in.">
-<meta name="theme-color" content="#06070A">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
 <style>
 :root {
-  --bg: #06070A; --surface: #0F1116; --raise: #161922; --line: rgba(255,255,255,.09); --line-hi: rgba(255,255,255,.2);
-  --fg: #ECEDEE; --soft: #B4B6BD; --mute: #7C808A;
-  --lime: #C2FF3D; --lime-soft: rgba(194,255,61,.12); --lime-line: rgba(194,255,61,.35); --amber: #FFC857;
-  --sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ink: #12201B; --soft: #4C5B55; --mute: #75827C; --line: #E3E8E5; --tint: #F4F7F5; --white: #FFFFFF;
+  --green: #0B6B4F; --green-dark: #084F3B; --mint: #E3F2EC; --amber: #8A5A00; --amber-bg: #FBF1DC;
+  --font: "Onest", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --gutter: max(20px, env(safe-area-inset-left), 4vw);
-  color-scheme: dark;
+  color-scheme: light;
 }
 * { box-sizing: border-box }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 90px }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 400 17px/1.55 var(--sans); -webkit-font-smoothing: antialiased }
+html { -webkit-text-size-adjust: 100% }
+body { margin: 0; background: var(--white); color: var(--ink); font: 400 17px/1.55 var(--font); -webkit-font-smoothing: antialiased }
 a { color: inherit; text-decoration: none }
-:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; border-radius: 4px }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: left }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 6px }
 h1, h2, h3, p { margin: 0 }
-.inner { max-width: 1160px; margin: 0 auto; padding-inline: var(--gutter) }
+.inner { max-width: 1120px; margin: 0 auto; padding-inline: var(--gutter) }
+.btn { display: inline-block; background: var(--green); color: #fff; font-weight: 600; padding: 14px 26px; border-radius: 10px; transition: background .15s }
+.btn:hover { background: var(--green-dark) }
+.btn.sm { padding: 9px 16px; font-size: 15px; border-radius: 8px }
 
-.btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; padding: 13px 24px; border-radius: 999px; transition: background .15s, box-shadow .15s, border-color .15s }
-.btn.primary { background: var(--lime); color: #0A0C04; box-shadow: 0 0 34px rgba(194,255,61,.22) }
-.btn.primary:hover { background: #D4FF6E; box-shadow: 0 0 46px rgba(194,255,61,.34) }
-.btn.ghost { border: 1px solid var(--line-hi); color: var(--fg) }
-.btn.ghost:hover { background: rgba(255,255,255,.06) }
-.btn.sm { padding: 8px 16px; font-size: 14px }
+header .inner { display: flex; justify-content: space-between; align-items: center; padding-block: 18px }
+.logo { font-weight: 700; font-size: 22px; letter-spacing: -.035em }
 
-/* nav */
-.nav { position: sticky; top: 0; z-index: 20; background: rgba(6,7,10,.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid transparent }
-.nav .inner { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding-block: 16px }
-.logo { font-weight: 700; font-size: 21px; letter-spacing: -.03em }
-.logo i { font-style: normal; color: var(--lime) }
-.links { display: flex; gap: 2px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.02) }
-.links a { padding: 6px 15px; border-radius: 999px; font-size: 14px; color: var(--soft); transition: color .15s, background .15s }
-.links a:hover { color: var(--fg); background: rgba(255,255,255,.06) }
-.nav .btn { justify-self: end }
+.hero { text-align: center; padding-block: clamp(44px, 7vw, 84px) clamp(36px, 5vw, 56px) }
+h1 { font-size: clamp(42px, 6.6vw, 76px); line-height: 1.04; letter-spacing: -.045em; font-weight: 600; text-wrap: balance }
+.lede { font-size: clamp(18px, 1.8vw, 21px); line-height: 1.5; color: var(--soft); max-width: 35em; margin: 20px auto 30px }
+.note { font-size: 14px; color: var(--mute); margin-top: 14px }
 
-/* hero */
-.hero { position: relative; isolation: isolate; overflow: hidden }
-.hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: radial-gradient(circle, rgba(255,255,255,.1) .8px, transparent .8px); background-size: 26px 26px; -webkit-mask-image: linear-gradient(180deg, #000, transparent 88%); mask-image: linear-gradient(180deg, #000, transparent 88%) }
-.hero::after { content: ""; position: absolute; z-index: -1; right: -8%; top: 4%; width: 720px; height: 620px; max-width: 100%; background: radial-gradient(closest-side, rgba(194,255,61,.13), transparent) }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: clamp(36px, 5vw, 72px); align-items: center; padding-block: clamp(44px, 7vw, 96px) clamp(60px, 8vw, 112px) }
-.badge { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--soft); border: 1px solid var(--line); background: rgba(255,255,255,.03); padding: 5px 13px; border-radius: 999px; margin-bottom: 24px }
-.badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px var(--lime) }
-h1 { font-size: clamp(42px, 5vw, 72px); line-height: 1.02; letter-spacing: -.045em; font-weight: 700; text-wrap: balance }
-h1 span { display: block; color: var(--lime) } h1 { text-wrap: wrap } h1 b { font-weight: inherit; display: block; white-space: nowrap }
-.lede { font-size: clamp(18px, 1.6vw, 20px); color: var(--soft); max-width: 31em; margin: 24px 0 32px; line-height: 1.5 }
-.cta { display: flex; flex-wrap: wrap; gap: 12px }
+/* the working product panel */
+.stage { background: var(--tint); padding: clamp(20px, 3vw, 36px); border-radius: 22px }
+.app { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-align: left; box-shadow: 0 1px 2px rgba(18,32,27,.05), 0 18px 44px -24px rgba(18,32,27,.25) }
+.list { border-right: 1px solid var(--line); padding: 20px 12px 12px }
+.list h2 { font-size: 19px; letter-spacing: -.02em; font-weight: 600; padding: 0 10px }
+.list .hint { font-size: 14px; color: var(--mute); padding: 2px 10px 12px }
+.person { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; width: 100%; padding: 13px 10px; border-radius: 10px; transition: background .12s }
+.person:hover { background: var(--tint) }
+.person[aria-pressed="true"] { background: var(--mint) }
+.rank { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 600; background: var(--tint); color: var(--soft) }
+.person[aria-pressed="true"] .rank { background: var(--green); color: #fff }
+.who { font-weight: 600; line-height: 1.3; display: block }
+.why { font-size: 14.5px; line-height: 1.4; color: var(--soft); display: block; margin-top: 1px }
+.detail { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 16px }
+.dhead .name { font-size: 22px; font-weight: 600; letter-spacing: -.025em; line-height: 1.2 }
+.dhead .sub { font-size: 14.5px; color: var(--mute) }
+.label { font-size: 13.5px; font-weight: 500; color: var(--mute); margin-bottom: 5px }
+.said { background: var(--tint); border-radius: 10px; padding: 13px 15px; font-size: 15.5px; line-height: 1.45 }
+.draft { border: 1px solid var(--line); border-radius: 10px; padding: 13px 15px; font-size: 15.5px; line-height: 1.45 }
+.acts { display: flex; gap: 8px; margin-top: auto; flex-wrap: wrap }
+.acts button { font-weight: 600; font-size: 15px; padding: 10px 20px; border-radius: 8px; background: var(--green); color: #fff; transition: background .15s }
+.acts button:hover { background: var(--green-dark) }
+.acts button + button { background: #fff; color: var(--ink); border: 1px solid var(--line) }
+.acts button + button:hover { background: var(--tint) }
+.flash { font-size: 14px; color: var(--green); font-weight: 500; min-height: 21px }
 
-/* product panel */
-.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden }
-.glow { border-color: var(--lime-line); box-shadow: 0 0 0 1px rgba(194,255,61,.05), 0 30px 90px -30px rgba(194,255,61,.28) }
-.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 18px; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--soft) }
-.bar b { color: var(--fg); font-weight: 600 }
-.tag { font: 500 12px/1 var(--mono); color: var(--mute); border: 1px solid var(--line); padding: 5px 8px; border-radius: 999px; white-space: nowrap }
-.rank { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 13px; padding: 15px 18px; border-bottom: 1px solid var(--line); animation: rise .5s cubic-bezier(.2,.8,.2,1) backwards }
-.rank:last-child { border-bottom: 0 }
-.rank:nth-child(2) { animation-delay: .2s } .rank:nth-child(3) { animation-delay: .32s } .rank:nth-child(4) { animation-delay: .44s }
-@keyframes rise { from { opacity: 0; transform: translateY(8px) } }
-.n { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font: 500 14px/1 var(--mono); border: 1px solid var(--line-hi); color: var(--soft) }
-.top .n { background: var(--lime); border-color: var(--lime); color: #0A0C04 }
-.who { font-weight: 600; font-size: 17px; line-height: 1.3 }
-.why { font-size: 14.5px; color: var(--soft); line-height: 1.42; margin-top: 2px }
-.do { display: inline-block; font-size: 13px; font-weight: 500; color: var(--lime); margin-top: 6px }
+section { padding-block: clamp(60px, 8vw, 104px) }
+h2.big { font-size: clamp(32px, 4.2vw, 48px); line-height: 1.08; letter-spacing: -.035em; font-weight: 600; max-width: 17em; text-wrap: balance }
+.sub { color: var(--soft); font-size: 18px; max-width: 35em; margin-top: 14px }
 
-/* sections */
-section { padding-block: clamp(64px, 8vw, 112px) }
-.alt { background: #090A0E; border-block: 1px solid var(--line) }
-.kicker { font: 500 14px/1 var(--mono); color: var(--lime); margin-bottom: 14px }
-h2 { font-size: clamp(32px, 4vw, 50px); line-height: 1.08; letter-spacing: -.035em; font-weight: 700; max-width: 18em; text-wrap: balance }
-.sub { color: var(--soft); font-size: 18px; max-width: 34em; margin-top: 16px }
-.center { text-align: center } .center h2, .center .sub { margin-inline: auto }
-
-/* feature grid */
-.bento { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 44px }
-.tile { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 26px; transition: border-color .15s }
-.tile:hover { border-color: var(--line-hi) }
-.tile h3 { font-size: 19px; font-weight: 600; letter-spacing: -.015em; margin-bottom: 7px }
-.tile p { color: var(--soft); font-size: 16px; max-width: 32em }
-
-/* split */
-.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(36px, 6vw, 84px); align-items: center }
-.said { background: var(--raise); border-radius: 12px; padding: 13px 15px; font-size: 15.5px; line-height: 1.45 }
-.said small { display: block; color: var(--mute); font-size: 13px; margin-top: 6px }
-.draft { border-left: 2px solid var(--lime); padding-left: 13px; font-size: 15.5px; line-height: 1.45 }
-.draft b { display: block; font-size: 13px; font-weight: 500; color: var(--mute); margin-bottom: 3px }
-.contact { padding: 18px; display: grid; gap: 15px }
-.acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
-.acts span { text-align: center; font-weight: 600; font-size: 15px; padding: 10px; border-radius: 999px; background: var(--lime); color: #0A0C04 }
-.acts span + span { background: transparent; color: var(--fg); border: 1px solid var(--line-hi) }
-
-/* team table */
-.tablewrap { margin-top: 40px; overflow-x: auto; -webkit-overflow-scrolling: touch }
+/* team */
+.tablewrap { margin-top: 36px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 14px }
 table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 15.5px }
-th { text-align: left; font-weight: 500; font-size: 13.5px; color: var(--mute); padding: 13px 18px; border-bottom: 1px solid var(--line) }
-td { padding: 14px 18px; border-bottom: 1px solid var(--line); color: var(--soft) }
+caption { caption-side: bottom; text-align: left; font-size: 14px; color: var(--mute); padding: 12px 18px; border-top: 1px solid var(--line) }
+th { text-align: left; font-weight: 500; font-size: 14px; color: var(--mute); padding: 13px 18px; border-bottom: 1px solid var(--line) }
+td { padding: 14px 18px; border-bottom: 1px solid var(--line) }
 tbody tr:last-child td { border-bottom: 0 }
-td:first-child { color: var(--fg); font-weight: 500; white-space: nowrap }
-.num { text-align: right; font-variant-numeric: tabular-nums }
-.pill { display: inline-block; font-size: 13.5px; font-weight: 500; padding: 3px 11px; border-radius: 999px; background: rgba(255,200,87,.12); color: var(--amber) }
-.pill.ok { background: var(--lime-soft); color: var(--lime) }
+td:first-child { font-weight: 500; white-space: nowrap }
+.num { text-align: right }
+.pill { display: inline-block; font-size: 14px; font-weight: 500; padding: 3px 11px; border-radius: 999px; background: var(--amber-bg); color: var(--amber) }
+.pill.ok { background: var(--mint); color: var(--green-dark) }
 
 /* steps */
-.steps { list-style: none; margin: 44px auto 0; padding: 0; max-width: 620px; text-align: left }
-.steps li { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 18px; padding-bottom: 32px }
-.steps li:last-child { padding-bottom: 0 }
-.steps li:not(:last-child)::before { content: ""; position: absolute; left: 19.5px; top: 44px; bottom: 4px; width: 1px; background: var(--lime-line) }
-.steps .n { width: 40px; height: 40px; border-color: var(--lime-line); color: var(--lime) }
-.steps h3 { font-size: 19px; font-weight: 600; letter-spacing: -.015em; margin: 6px 0 4px }
+.band { background: var(--tint) }
+.steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px }
+.steps .rank { background: var(--green); color: #fff; margin-bottom: 14px }
+.steps h3 { font-size: 19px; font-weight: 600; letter-spacing: -.015em; margin-bottom: 5px }
 .steps p { color: var(--soft); font-size: 16px }
 
-/* close */
-.close { position: relative; isolation: isolate; overflow: hidden }
-.close::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 760px; height: 400px; max-width: 100%; background: radial-gradient(closest-side, rgba(194,255,61,.13), transparent) }
-.close .cta { justify-content: center; margin-top: 30px }
-.close h2 span { color: var(--lime) }
+.close { text-align: center }
+.close .big { margin: 0 auto 26px }
+footer { border-top: 1px solid var(--line); padding-block: 28px 34px; font-size: 14px; color: var(--mute) }
+footer p { max-width: 62em }
+footer p + p { margin-top: 6px }
 
-footer { border-top: 1px solid var(--line); padding-block: 30px 36px; font-size: 14px; color: var(--mute) }
-.foot { display: flex; justify-content: space-between; align-items: start; gap: 24px 48px; flex-wrap: wrap }
-.foot p { max-width: 42em }
-.foot .logo { color: var(--fg) }
-
-@media (max-width: 900px) {
-  .hero-grid, .split { grid-template-columns: minmax(0, 1fr) }
-  .nav .inner { grid-template-columns: 1fr auto } .links { display: none }
-  .bento { grid-template-columns: minmax(0, 1fr) }
-  .split > .panel { order: 2 }
+@media (max-width: 820px) {
+  .app { grid-template-columns: minmax(0, 1fr) }
+  .list { border-right: 0; border-bottom: 1px solid var(--line) }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 26px }
+  .stage { margin-inline: calc(var(--gutter) * -1); border-radius: 0 }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } .rank { animation: none } .btn, .tile, .links a { transition: none } }
+@media (max-width: 560px) { table { min-width: 0 } th, td { padding-inline: 12px } th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4) { display: none } td:first-child { white-space: normal } }
+@media (prefers-reduced-motion: reduce) { .btn, .person, .acts button { transition: none } }
 </style>
 </head>
 <body>
-<nav class="nav" aria-label="Main">
-  <div class="inner">
-    <a class="logo" href="#top">zaki<i>.</i></a>
-    <div class="links"><a href="#agents">For agents</a><a href="#teams">For team leads</a><a href="#how">How it works</a></div>
-    <a class="btn primary sm" href="https://zaki-demo.vercel.app">Try the demo</a>
-  </div>
-</nav>
-
-<div class="hero" id="top">
-  <div class="inner hero-grid">
-    <div>
-      <div class="badge">Being built with real estate teams in Atlanta</div>
-      <h1><b>5,000 contacts.</b> <span>Call these three.</span></h1>
-      <p class="lede">Zaki is the AI operating system for real estate agents. Every morning it tells you who to call and what to say, right on your phone, so you can stay out showing homes.</p>
-      <div class="cta"><a class="btn primary" href="https://zaki-demo.vercel.app">Try the demo</a><a class="btn ghost" href="#how">See how it works</a></div>
-    </div>
-    <div class="panel glow" aria-label="Example morning list, sample data">
-      <div class="bar"><b>Today</b><span class="tag">sample data</span></div>
-      <div>
-        <div class="rank top"><div class="n">1</div><div><div class="who">Dana Reyes</div><div class="why">Said "around the new year" on your last call. A home that fits just listed in Roswell.</div><span class="do">Ask about Saturday</span></div></div>
-        <div class="rank"><div class="n">2</div><div><div class="who">Marcus Tate</div><div class="why">Asked about selling in spring. You last talked 41 days ago.</div><span class="do">Check in</span></div></div>
-        <div class="rank"><div class="n">3</div><div><div class="who">Priya Shah</div><div class="why">Opened the same listing three times this week.</div><span class="do">Offer a showing</span></div></div>
-      </div>
-    </div>
-  </div>
-</div>
+<header><div class="inner"><a class="logo" href="./">Zaki</a><a class="btn sm" href="https://tryzaki.vercel.app">Try the demo</a></div></header>
 
 <main>
-  <section class="alt" id="agents">
-    <div class="inner split">
-      <div>
-        <p class="kicker">For agents</p>
-        <h2>It remembers what your client said.</h2>
-        <p class="sub">A buyer tells you "six months" in June. By October, nobody remembers. Zaki writes up the call, keeps the timeline, and brings them back when it's time, with the reason to call.</p>
-        <p class="sub">It drafts the follow-up too. You read it before anything goes out.</p>
-      </div>
-      <div class="panel" aria-label="Example contact, sample data">
-        <div class="bar"><b>Dana Reyes</b><span class="tag">sample data</span></div>
-        <div class="contact">
-          <div class="said">"We want to be in by the new year. A yard for the dog is the one thing we won't budge on."<small>Your call, September 9</small></div>
-          <div class="draft"><b>Text ready to send</b>Hi Dana, a home just listed in Roswell with a big fenced yard. It's $598K. Want to see it Saturday?</div>
-          <div class="acts"><span>Call</span><span>Send text</span></div>
+  <div class="inner hero">
+    <h1>Know who to call today.</h1>
+    <p class="lede">Agents have 5,000 contacts and time for a few. Zaki is the AI operating system that tells you who to call each morning and what to say, right on your phone.</p>
+    <a class="btn" href="https://tryzaki.vercel.app">Try the demo</a>
+    <p class="note">No login. Takes two minutes. Uses sample data.</p>
+  </div>
+
+  <div class="inner">
+    <div class="stage">
+      <div class="app">
+        <div class="list">
+          <h2>Your calls today</h2>
+          <p class="hint">Sample data. Tap a name.</p>
+          <div id="people"></div>
         </div>
+        <div class="detail" id="detail" aria-live="polite"></div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section id="teams">
+  <section>
     <div class="inner">
-      <p class="kicker">For team leads</p>
-      <h2>See what your team did yesterday, not just what closed.</h2>
+      <h2 class="big">See what your team did yesterday, not just what closed.</h2>
       <p class="sub">Most team leads only hear about a deal when the paperwork shows up. Zaki shows every agent's activity and ranks where you should step in.</p>
-      <div class="panel tablewrap">
+      <div class="tablewrap">
         <table>
+          <caption>Example team view, sample data</caption>
           <thead><tr><th scope="col">Agent</th><th scope="col" class="num">Calls</th><th scope="col" class="num">Conversations</th><th scope="col" class="num">Leads waiting</th><th scope="col">Where to step in</th></tr></thead>
           <tbody>
             <tr><td>Jordan Ellis</td><td class="num">4</td><td class="num">1</td><td class="num">23</td><td><span class="pill">Hand off 10 waiting leads</span></td></tr>
@@ -205,34 +145,57 @@ footer { border-top: 1px solid var(--line); padding-block: 30px 36px; font-size:
     </div>
   </section>
 
-  <section class="alt" id="how">
-    <div class="inner center">
-      <p class="kicker">How it works</p>
-      <h2>Nothing new to learn.</h2>
-      <p class="sub">Zaki sits on top of the tools you already use.</p>
+  <section class="band">
+    <div class="inner">
+      <h2 class="big">Nothing new to learn.</h2>
       <ol class="steps">
-        <li><div class="n">1</div><div><h3>Connect your CRM</h3><p>Your contacts and notes come in. Your data stays yours, and your broker can't see it.</p></div></li>
-        <li><div class="n">2</div><div><h3>Keep making your calls</h3><p>Zaki writes up each call and saves what the client wants and when.</p></div></li>
-        <li><div class="n">3</div><div><h3>Open your list each morning</h3><p>See who to call, why, and what to say.</p></div></li>
-        <li><div class="n">4</div><div><h3>Call or send, then get back out</h3><p>One tap to call. Read the draft, then send it.</p></div></li>
+        <li><div class="rank">1</div><h3>Connect your CRM</h3><p>Zaki sits on top of the tool you already use. Your client data stays private to you.</p></li>
+        <li><div class="rank">2</div><h3>Keep making your calls</h3><p>Zaki writes up each call and saves what the client wants and when.</p></li>
+        <li><div class="rank">3</div><h3>Open your list each morning</h3><p>See who to call, why, and what to say. Read each draft before it goes out.</p></li>
       </ol>
     </div>
   </section>
 
   <section class="close">
-    <div class="inner center">
-      <h2>Agents get paid to be <span>with clients.</span></h2>
-      <p class="sub">The demo takes two minutes and needs no login.</p>
-      <div class="cta"><a class="btn primary" href="https://zaki-demo.vercel.app">Try the demo</a></div>
+    <div class="inner">
+      <h2 class="big">Agents get paid to be with clients.</h2>
+      <a class="btn" href="https://tryzaki.vercel.app">Try the demo</a>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="inner foot">
-    <a class="logo" href="#top">zaki<i>.</i></a>
-    <p>Built in Atlanta by Alexander Jaber, Carl Fakhir and Christopher Samaha. The demo uses sample data. © 2026 Zaki. Zaki is independent and is not affiliated with or endorsed by Keller Williams or any other brokerage or software company named in the demo.</p>
+  <div class="inner">
+    <p>Built in Atlanta by Alexander Jaber, Carl Fakhir and Christopher Samaha. We're building the live version with real estate teams now.</p>
+    <p>© 2026 Zaki. Zaki is independent and is not affiliated with or endorsed by Keller Williams or any other brokerage or software company named in the demo.</p>
   </div>
 </footer>
+
+<script>
+(function () {
+  var people = [
+    { name: "Dana Reyes", why: "A home that fits just listed in Roswell.", sub: "Buyer, up to $620K", said: "“We want to be in by the new year. A yard for the dog is the one thing we won't budge on.”", when: "Your call, September 9", draft: "Hi Dana, a home just listed in Roswell with a big fenced yard. It's $598K. Want to see it Saturday?" },
+    { name: "Marcus Tate", why: "Asked about selling in spring. It's been 41 days.", sub: "Possible seller, Decatur", said: "“We'd list in spring if we can find the next place first.”", when: "Your call, September 22", draft: "Hi Marcus, spring is closer than it feels. Want me to send a quick value estimate for your home this week?" },
+    { name: "Priya Shah", why: "Opened the same listing three times this week.", sub: "Buyer, up to $450K", said: "“We're just starting to look, but we're serious about Alpharetta.”", when: "Your call, October 2", draft: "Hi Priya, I saw the Alpharetta townhome caught your eye. I can get you in on Thursday if you'd like to see it." }
+  ];
+  var list = document.getElementById("people"), detail = document.getElementById("detail"), cur = 0;
+  function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function draw() {
+    list.innerHTML = people.map(function (p, i) {
+      return '<button class="person" data-i="' + i + '" aria-pressed="' + (i === cur) + '"><span class="rank">' + (i + 1) + '</span><span><span class="who">' + esc(p.name) + '</span><span class="why">' + esc(p.why) + '</span></span></button>';
+    }).join("");
+    var p = people[cur];
+    detail.innerHTML = '<div class="dhead"><div class="name">' + esc(p.name) + '</div><div class="sub">' + esc(p.sub) + '</div></div>' +
+      '<div><div class="label">' + esc(p.when) + '</div><div class="said">' + esc(p.said) + '</div></div>' +
+      '<div><div class="label">Text ready to send</div><div class="draft">' + esc(p.draft) + '</div></div>' +
+      '<div class="acts"><button data-act="Sample only. In Zaki, this calls ' + esc(p.name.split(" ")[0]) + '.">Call</button><button data-act="Sample only. In Zaki, you read it, then send it.">Send text</button></div><div class="flash" id="flash"></div>';
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-i]"); if (b) { cur = +b.dataset.i; draw(); var n = list.querySelector('[data-i="' + cur + '"]'); if (n) n.focus(); return; }
+    var a = e.target.closest("[data-act]"); if (a) document.getElementById("flash").textContent = a.dataset.act;
+  });
+  draw();
+})();
+</script>
 </body>
 </html>
