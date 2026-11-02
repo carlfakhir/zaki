@@ -10,7 +10,7 @@ body { margin: 0; font: 14px system-ui, sans-serif }
 img { max-width: 100% }
 [hidden] { display: none !important }
 </style>
-<title>Zakki Prototype</title>
+<title>Zaki Prototype</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
@@ -694,14 +694,14 @@ function render() {
 
 function renderTop() {
   $("#top").innerHTML = `
-    <div class="brand"><span class="mark"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2.4" stroke-linecap="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></span>Zakki <span class="proto">Prototype</span></div>
+    <div class="brand"><span class="mark"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="2.4" stroke-linecap="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></span>Zaki <span class="proto">Prototype</span></div>
     ${role ? `<div class="search" id="search">${svg("search")}<input id="q" placeholder="Search people and deals, or ask anything" autocomplete="off" aria-label="Search or ask"><kbd>/</kbd><div class="results" id="results" hidden></div></div>` : "<span></span>"}
     <div class="topr">${role ? `<button class="ghost sm" id="switchRole">Switch role</button>` : ""}</div>`;
 }
 
 function pickView() {
   return `<div class="pick">
-    <div style="display:grid;gap:8px;max-width:40ch"><h1>Who's using Zakki today?</h1><p class="muted">Pick one. You can switch any time. This is a demo: everything here is sample data, and no apps are really connected.</p></div>
+    <div style="display:grid;gap:8px;max-width:40ch"><h1>Who's using Zaki today?</h1><p class="muted">Pick one. You can switch any time. This is a demo: everything here is sample data, and no apps are really connected.</p></div>
     <div class="roles">
       <button class="role" data-role="lead"><span class="ic acc">${svg("user", 18)}</span><h2>I run the office or a team</h2>
         <ul><li>See which deals and leads need you today</li><li>Route new leads so nobody waits</li><li>Coach agents using their real calls</li></ul></button>
@@ -1063,7 +1063,7 @@ function appsView() {
           ${a.on ? `<button class="ghost sm" data-disconnect="${a.id}">Remove</button>` : `<button class="ghost sm" data-connect="${a.id}">Connect</button>`}</div>`;
   return `
     <div class="box">
-      <div><h2>Connected</h2><p class="small muted">Zakki works inside the tools you already use.</p></div>
+      <div><h2>Connected</h2><p class="small muted">Zaki works inside the tools you already use.</p></div>
       <div class="apps">${mine.map(appTile).join("")}</div>
     </div>
     <div class="box">
@@ -1146,7 +1146,7 @@ let modalSend = null;
 function connectModal(id) {
   const a = app(id), g = GROUPS[a.group];
   openModal(`<div class="mh">${logo(id, true)}<div><h2>Connect ${a.name}</h2><span class="small muted">${g[0]}</span></div></div>
-    <p>Zakki will be able to:</p><ul>${g[1].map(c => `<li>${c}</li>`).join("")}</ul>
+    <p>Zaki will be able to:</p><ul>${g[1].map(c => `<li>${c}</li>`).join("")}</ul>
     ${id === "slack" ? `<label class="small" for="chan"><b>Post wins and alerts to</b></label><select id="chan"><option>#team-wins</option><option>#leads</option><option>#general</option><option>Just me</option></select>` : ""}
     ${id === "phone" ? `<p class="small muted">You get a number that rings your cell. Calls start with a short "this call may be recorded" message.</p>` : ""}
     <p class="small faint">Demo only. Nothing really connects.</p>
